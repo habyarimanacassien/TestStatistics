@@ -67,7 +67,7 @@ get_input_method <- function() {
   }
 }
 
-# Helper function to select data column
+# Function to select data column
 select_column <- function(data, prompt_text) {
   repeat {
     cat("\n", prompt_text, "\n", sep = "")
@@ -89,7 +89,7 @@ select_column <- function(data, prompt_text) {
   }
 }
 
-# Helper function to read numeric vector entered manually
+# Function to read numeric vector entered manually
 read_numeric_vector <- function(prompt_text) {
   cat(prompt_text)
   input <- readline()
@@ -143,7 +143,7 @@ import_csv_data <- function(test_type) {
   }
 }
 
-# Extract data for one-sample t-test
+# Function to extract data for one-sample t-test
 extract_one_sample_data <- function(data) {
   col_name <- select_column(data, "Select column for sample data:")
   
@@ -165,7 +165,7 @@ extract_one_sample_data <- function(data) {
   return(list(x = x, mu = mu))
 }
 
-# Extract data for paired t-test
+# Function to extract data for paired t-test
 extract_paired_data <- function(data) {
   col1 <- select_column(data, "Select first column:")
   col2 <- select_column(data, "Select second column:")
@@ -190,7 +190,7 @@ extract_paired_data <- function(data) {
   return(list(x = x, y = y))
 }
 
-# Extract data for independent t-test
+# Function to extract data for independent t-test
 extract_independent_data <- function(data) {
   col1 <- select_column(data, "Select first sample column:")
   col2 <- select_column(data, "Select second sample column:")
@@ -213,7 +213,7 @@ extract_independent_data <- function(data) {
   return(list(x = x, y = y))
 }
 
-# Extract data for chi-squared test
+# Function to extract data for chi-squared test
 extract_chisq_data <- function(data) {
   cat("\nFor chi-squared test, the CSV should contain a contingency table.\n")
   cat("Rows represent categories of one variable, columns represent another.\n")

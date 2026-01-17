@@ -67,7 +67,7 @@ get_input_method <- function() {
   }
 }
 
-# Helper function to select column by number
+# Helper function to select data column
 select_column <- function(data, prompt_text) {
   repeat {
     cat("\n", prompt_text, "\n", sep = "")
@@ -89,7 +89,7 @@ select_column <- function(data, prompt_text) {
   }
 }
 
-# Helper function to read numeric vector manually
+# Helper function to read numeric vector entered manually
 read_numeric_vector <- function(prompt_text) {
   cat(prompt_text)
   input <- readline()
@@ -115,7 +115,7 @@ import_csv_data <- function(test_type) {
       
       cat("\nFile loaded successfully!\n")
       cat("Columns found:", paste(names(data), collapse = ", "), "\n")
-      cat("Number of rows:", nrow(data), "\n\n")
+      cat("Max number of rows:", nrow(data), "\n\n")
       
       # Validate and extract data based on test type
       if (test_type == "one_sample") {
@@ -244,9 +244,9 @@ extract_chisq_data <- function(data) {
   return(list(observed = observed))
 }
 
-# =============================================================================
+# =========================================================================== #
 #                                 MAIN PROGRAM                                #
-# =============================================================================
+# =========================================================================== #
 
 repeat {
   
@@ -298,6 +298,7 @@ repeat {
     
     if (input_method == 1) {
       # Manual entry
+      cat("\nBoth x and y must have same sample size!\n")
       x <- read_numeric_vector("Enter first sample (x, space-separated): \n")
       y <- read_numeric_vector("Enter second sample (y, space-separated): \n")
       
@@ -369,7 +370,7 @@ repeat {
       rows <- as.integer(readline("Enter number of rows: \n"))
       cols <- as.integer(readline("Enter number of columns: \n"))
       
-      cat("\nEnter the observed frequencies row by row:\n")
+      cat("\nEnter the observed frequencies row by row: \n")
       
       observed <- matrix(0, nrow = rows, ncol = cols)
       
